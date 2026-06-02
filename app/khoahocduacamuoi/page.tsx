@@ -273,6 +273,37 @@ export default function KhoaHocDuaCaMuoi() {
         </div>
       </section>
 
+      {/* ══ GALLERY ══ */}
+      <section className="py-14 px-4 sm:px-6 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-8">
+            <span className="inline-block bg-green-50 text-[#006400] font-bold text-xs px-4 py-1.5 rounded-full mb-3 tracking-widest uppercase">Thành phẩm</span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-800 mb-2">
+              Những Hũ Dưa Cà <span className="text-[#006400]">Giòn Ngon, Đẹp Mắt</span>
+            </h2>
+            <p className="text-gray-500 text-sm max-w-lg mx-auto">Học xong là làm được ngay — từ dưa cải đến cà muối mắm, đủ món cho bữa cơm Việt</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
+            {[
+              { src: '/images/thanh-pham-tong-hop.jpg', label: 'Bộ sưu tập dưa cà – 6 món trong khóa học', tall: true },
+              { src: '/images/ca-muoi-mam-chau.jpg', label: 'Cà muối mắm', tall: false },
+              { src: '/images/dua-cu-cai-ca-rot.jpg', label: 'Dưa củ cải cà rốt', tall: false },
+              { src: '/images/ca-muoi-mam-khai.jpg', label: 'Cà muối mắm cay', tall: false },
+              { src: '/images/dua-ca-muoi-bat.jpg', label: 'Dưa cà muối', tall: false },
+              { src: '/images/dua-cai-dia.jpg', label: 'Dưa cải muối chua', tall: false },
+            ].map(img => (
+              <div key={img.src} className={`relative rounded-2xl overflow-hidden shadow-md group${img.tall ? ' col-span-2 md:col-span-1' : ''}`}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={img.src} alt={img.label} className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent px-3 py-2.5">
+                  <p className="text-white text-xs font-semibold drop-shadow">{img.label}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ══ FLOW 1: GIFT FORM ══ */}
       <section className="py-16 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
@@ -401,6 +432,9 @@ export default function KhoaHocDuaCaMuoi() {
                 { name: 'Chị Lan – Hà Nội', text: 'Học xong là làm được ngay, cả nhà khen nức nở! Mấy hũ dưa cải của tôi giờ không đủ bán 😄', av: '👩' },
                 { name: 'Chị Mai – TP.HCM', text: 'Công thức chi tiết lắm, Cô Hạ giải thích rõ ràng từng bước. Đáng tiền lắm chị em ơi!', av: '👩‍🦱' },
                 { name: 'Chị Hương – Đà Nẵng', text: 'Tôi mở hàng bán dưa cà sau khi học khóa này, khách phản hồi rất tốt 🙏', av: '👩‍🦳' },
+                { name: 'Chị Thảo – Cần Thơ', text: 'Trước giờ tôi muối cà hay bị nhũn, học bí quyết của Cô Hạ xong là hết lỗi luôn. Cà giòn đều từng hũ!', av: '👩' },
+                { name: 'Anh Tùng – Hải Phòng', text: 'Vợ tôi học xong rồi bán online, một tháng thêm được vài triệu. Cô Hạ dạy rất tận tâm, chu đáo!', av: '👨' },
+                { name: 'Chị Ngọc – Bình Dương', text: 'Giờ tự muối đủ loại dưa cho gia đình, không cần mua ngoài nữa. Sạch hơn, an toàn hơn, ngon hơn!', av: '👩‍🦰' },
               ].map(t => (
                 <div key={t.name} className="bg-white rounded-xl p-4 shadow-sm border border-gray-100">
                   <div className="flex items-center gap-3 mb-2">
@@ -467,6 +501,42 @@ export default function KhoaHocDuaCaMuoi() {
         </div>
       </section>
 
+      {/* ══ ABOUT CÔ HẠ ══ */}
+      <section className="py-16 px-4 sm:px-6 bg-[#F4FAF6]">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div className="flex justify-center order-last md:order-first">
+              <div className="relative">
+                <div className="rounded-3xl overflow-hidden shadow-2xl max-w-xs sm:max-w-sm">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/images/co-ha-portrait.png" alt="Cô Hạ Dạy Nấu Ăn" className="w-full object-cover" />
+                </div>
+                <div className="absolute -bottom-4 -right-4 bg-[#006400] text-white rounded-2xl px-4 py-2.5 shadow-lg">
+                  <p className="font-extrabold text-base">6+ năm</p>
+                  <p className="text-green-200 text-xs">dạy nấu ăn</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <span className="inline-block bg-[#006400] text-[#90EE90] font-bold text-xs px-4 py-1.5 rounded-full mb-4 tracking-widest uppercase">Giáo viên trực tiếp</span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-800 mb-5">
+                Cô Hạ – Người Truyền Lửa<br /><span className="text-[#006400]">Căn Bếp Việt</span>
+              </h2>
+              <div className="space-y-4 text-gray-600 text-sm leading-relaxed">
+                <p><strong className="text-gray-800">Cô Hạ Dạy Nấu Ăn</strong> là thương hiệu thuộc HACO Food, do chính Cô Hạ trực tiếp đứng lớp và truyền nghề. Hơn 6 năm qua, Cô Hạ đã dạy hàng nghìn học viên cách làm những món truyền thống đậm vị Việt, từ bữa cơm gia đình hằng ngày đến các món dưa cà muối giòn ngon, sạch và an toàn cho cả nhà.</p>
+                <p>Trong khoá học Dưa Cà Muối, Cô Hạ chia sẻ công thức chuẩn đã được đúc kết qua nhiều năm, hướng dẫn từng bước dễ làm tại nhà, để ai cũng có thể tự tay muối được hũ dưa, hũ cà giòn thơm, để được lâu mà vẫn giữ trọn hương vị quê nhà.</p>
+                <p className="italic text-[#006400] font-medium border-l-4 border-[#90EE90] pl-4">"Cô Hạ tin rằng một bữa cơm Việt trọn vẹn luôn cần thêm chút dưa, chút cà, và đó cũng là cách giữ lửa căn bếp gia đình bằng những điều giản dị nhất."</p>
+              </div>
+              <div className="flex flex-wrap gap-2 mt-6">
+                {['6+ năm kinh nghiệm', 'Hàng nghìn học viên', 'HACO Food', 'Ẩm thực truyền thống Việt'].map(tag => (
+                  <span key={tag} className="bg-white text-[#006400] text-xs font-semibold px-3 py-1.5 rounded-full border border-green-200 shadow-sm">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ══ FAQ ══ */}
       <section className="py-12 px-4 sm:px-6 bg-white">
         <div className="max-w-3xl mx-auto">
@@ -477,6 +547,9 @@ export default function KhoaHocDuaCaMuoi() {
               { q: 'Tôi không biết nấu ăn có học được không?', a: 'Hoàn toàn được! Cô Hạ dạy từng bước từ cơ bản. Chưa biết nấu ăn vẫn làm được ngay sau khi xem video.' },
               { q: 'Thanh toán như thế nào?', a: 'Chuyển khoản qua QR code hoặc chuyển khoản thủ công. Sau khi chuyển, hệ thống tự xác nhận và gửi link group qua email trong vài phút.' },
               { q: 'Tôi có thể học lại nhiều lần không?', a: 'Có! Xem video không giới hạn số lần và thời gian. Group học viên luôn mở, Cô Hạ tiếp tục cập nhật công thức mới miễn phí.' },
+              { q: 'Sau khi đăng ký, tôi nhận được gì?', a: 'Bạn nhận email xác nhận và link mời vào group Facebook học viên riêng tư. Toàn bộ video bài giảng, công thức và tài liệu đều có trong group, truy cập được ngay lập tức.' },
+              { q: 'Khóa học có phù hợp để kinh doanh không?', a: 'Rất phù hợp! Nhiều học viên dùng công thức của Cô Hạ để mở hàng bán online thành công. Cô Hạ cũng chia sẻ cách làm số lượng lớn và bảo quản được lâu để bán.' },
+              { q: 'Nếu làm không thành công thì sao?', a: 'Trong group học viên, bạn có thể hỏi Cô Hạ và đội ngũ hỗ trợ bất cứ lúc nào. Cô Hạ trực tiếp giải đáp từng thắc mắc cho đến khi bạn làm được thành công.' },
             ].map(item => (
               <details key={item.q} className="bg-gray-50 rounded-xl border border-gray-200 group">
                 <summary className="px-5 py-4 font-semibold text-gray-800 cursor-pointer flex justify-between items-center hover:text-[#006400] transition-colors text-sm sm:text-base">
