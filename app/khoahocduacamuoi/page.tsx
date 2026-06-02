@@ -13,11 +13,11 @@ type Step = 'idle' | 'loading' | 'success' | 'error'
 function formatPrice(n: number) { return n.toLocaleString('vi-VN') + 'đ' }
 
 // ─── Brand colors ─────────────────────────────────────────────────────────────
-// Dark forest green: #1B4332  /  Mid: #2D6A4F  /  Light: #52B788
+// Darkgreen #006400 palette
 const C = {
-  hero: 'from-[#0D2B1A] via-[#1B4332] to-[#0D2B1A]',
-  btn:  'from-[#1B4332] to-[#2D6A4F] hover:from-[#2D6A4F] hover:to-[#1B4332]',
-  badge: 'bg-[#52B788] text-[#0D2B1A]',
+  hero: 'from-[#003200] via-[#006400] to-[#003200]',
+  btn:  'from-[#006400] to-[#007a00] hover:from-[#007a00] hover:to-[#006400]',
+  badge: 'bg-[#90EE90] text-[#003200]',
 }
 
 // ─── Countdown ────────────────────────────────────────────────────────────────
@@ -39,13 +39,15 @@ function useCountdown(hours = 24) {
 // ─── YouTube Short embed ──────────────────────────────────────────────────────
 function YTShort({ id, title }: { id: string; title: string }) {
   return (
-    <div className="relative w-full max-w-[280px] mx-auto" style={{ aspectRatio: '9/16' }}>
-      {/* Phone frame */}
-      <div className="absolute inset-0 rounded-[2rem] border-[6px] border-gray-800 shadow-2xl overflow-hidden bg-black z-10 pointer-events-none" />
+    // iframe nằm BÊN TRONG phone frame – không bị che
+    <div
+      className="mx-auto w-full max-w-[260px] rounded-[2rem] border-[6px] border-gray-800 shadow-2xl overflow-hidden bg-black"
+      style={{ aspectRatio: '9/16' }}
+    >
       <iframe
         src={`https://www.youtube.com/embed/${id}?rel=0&modestbranding=1`}
         title={title}
-        className="absolute inset-0 w-full h-full rounded-[1.6rem]"
+        className="w-full h-full"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       />
@@ -85,7 +87,7 @@ function LeadForm({ ctaText, ctaColor, onSuccess }: {
           value={form[f]}
           onChange={e => { setForm(v => ({ ...v, [e.target.name]: e.target.value })); setError('') }}
           required
-          className="w-full border-2 border-gray-200 rounded-xl px-4 py-3.5 text-base focus:border-[#2D6A4F] focus:outline-none transition-colors placeholder-gray-400 bg-white"
+          className="w-full border-2 border-gray-200 rounded-xl px-4 py-3.5 text-base focus:border-[#007a00] focus:outline-none transition-colors placeholder-gray-400 bg-white"
         />
       ))}
       {error && <p className="text-red-500 text-sm text-center bg-red-50 rounded-lg py-2 px-3">{error}</p>}
@@ -129,7 +131,7 @@ function PaymentModal({ qr, onClose, onPaid }: { qr: QRData; onClose: () => void
   return (
     <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4" onClick={onClose}>
       <div className="bg-white rounded-2xl max-w-md w-full overflow-hidden shadow-2xl" onClick={e => e.stopPropagation()}>
-        <div className="bg-gradient-to-r from-[#1B4332] to-[#2D6A4F] px-6 py-4 flex items-center justify-between">
+        <div className="bg-gradient-to-r from-[#006400] to-[#007a00] px-6 py-4 flex items-center justify-between">
           <div><h3 className="text-white font-bold text-lg">Thanh toán chuyển khoản</h3>
             <p className="text-green-200 text-sm">Quét mã QR hoặc chuyển khoản thủ công</p></div>
           <button onClick={onClose} className="text-white/80 hover:text-white text-2xl">&times;</button>
@@ -165,7 +167,7 @@ function PaymentModal({ qr, onClose, onPaid }: { qr: QRData; onClose: () => void
             ⚠️ <strong>Nhập đúng nội dung CK</strong> để hệ thống tự xác nhận
           </div>
           <button onClick={() => { setChecking(true); setTimeout(onPaid, 1000) }} disabled={checking}
-            className="mt-4 w-full bg-[#1B4332] hover:bg-[#2D6A4F] text-white font-bold py-3 rounded-xl transition-colors disabled:opacity-60">
+            className="mt-4 w-full bg-[#006400] hover:bg-[#007a00] text-white font-bold py-3 rounded-xl transition-colors disabled:opacity-60">
             {checking ? 'Đang kiểm tra...' : '✅ Tôi đã chuyển khoản xong'}
           </button>
           <p className="text-xs text-gray-400 text-center mt-2">Hệ thống tự xác nhận và gửi thông tin qua email trong vài phút</p>
@@ -181,7 +183,7 @@ function SuccessScreen({ type, name, onClose }: { type: 'gift' | 'course'; name:
   return (
     <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <div className="bg-white rounded-2xl max-w-sm w-full overflow-hidden shadow-2xl text-center">
-        <div className={`px-6 py-8 bg-gradient-to-br ${type === 'course' ? 'from-[#1B4332] to-[#2D6A4F]' : 'from-[#2D6A4F] to-[#52B788]'}`}>
+        <div className={`px-6 py-8 bg-gradient-to-br ${type === 'course' ? 'from-[#006400] to-[#007a00]' : 'from-[#007a00] to-[#90EE90]'}`}>
           <div className="text-6xl mb-3">{type === 'course' ? '🎉' : '🎁'}</div>
           <h2 className="text-white text-2xl font-bold">{type === 'course' ? 'Thanh toán thành công!' : 'Đã gửi cho bạn!'}</h2>
           <p className="text-white/90 mt-1 text-sm">Xin chào {name} 👋</p>
@@ -234,7 +236,7 @@ export default function KhoaHocDuaCaMuoi() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/logo.png" alt="Bếp Cô Hạ" className="h-14 w-auto object-contain"
                 onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none' }} />
-              <span className="text-[#1B4332] font-extrabold text-xl tracking-tight">Bếp Cô Hạ</span>
+              <span className="text-[#006400] font-extrabold text-xl tracking-tight">Bếp Cô Hạ</span>
             </div>
           </div>
 
@@ -249,7 +251,7 @@ export default function KhoaHocDuaCaMuoi() {
           <div className="text-center mb-8">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
               Bí Quyết Làm<br />
-              <span className="text-[#52B788]">Dưa Cà Muối Ngon</span><br />
+              <span className="text-[#90EE90]">Dưa Cà Muối Ngon</span><br />
               Chuẩn Vị Từ Cô Hạ
             </h1>
             <p className="mt-4 text-green-200 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
@@ -274,7 +276,7 @@ export default function KhoaHocDuaCaMuoi() {
 
           <div className="flex justify-center">
             <button onClick={scrollToCourse}
-              className="bg-white text-[#1B4332] font-bold text-lg px-8 py-4 rounded-2xl shadow-lg hover:bg-green-50 transition-colors">
+              className="bg-white text-[#006400] font-bold text-lg px-8 py-4 rounded-2xl shadow-lg hover:bg-green-50 transition-colors">
               Xem khóa học ngay →
             </button>
           </div>
@@ -288,7 +290,7 @@ export default function KhoaHocDuaCaMuoi() {
           <div className="text-center mb-10">
             <span className="text-3xl">🎁</span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-800 mt-2 mb-3">
-              Nhận Ngay Quà Tặng <span className="text-[#1B4332]">MIỄN PHÍ</span> Từ Cô Hạ
+              Nhận Ngay Quà Tặng <span className="text-[#006400]">MIỄN PHÍ</span> Từ Cô Hạ
             </h2>
             <p className="text-gray-500 text-base max-w-xl mx-auto">
               Điền thông tin để nhận <strong>video làm Cà Muối Mắm</strong> – gửi vào email ngay lập tức!
@@ -333,9 +335,9 @@ export default function KhoaHocDuaCaMuoi() {
 
       {/* ══ DIVIDER ══ */}
       <div className="max-w-4xl mx-auto px-4 py-2 flex items-center gap-4">
-        <div className="flex-1 h-px bg-gradient-to-r from-transparent to-[#52B788]" />
+        <div className="flex-1 h-px bg-gradient-to-r from-transparent to-[#90EE90]" />
         <span className="text-xl">🌿</span>
-        <div className="flex-1 h-px bg-gradient-to-l from-transparent to-[#52B788]" />
+        <div className="flex-1 h-px bg-gradient-to-l from-transparent to-[#90EE90]" />
       </div>
 
       {/* ══ FLOW 2: COURSE ══ */}
@@ -343,12 +345,12 @@ export default function KhoaHocDuaCaMuoi() {
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <div className="text-center mb-10">
-            <span className="inline-block bg-[#1B4332] text-[#52B788] font-bold text-xs px-4 py-1.5 rounded-full mb-4 tracking-widest uppercase">
+            <span className="inline-block bg-[#006400] text-[#90EE90] font-bold text-xs px-4 py-1.5 rounded-full mb-4 tracking-widest uppercase">
               Khóa học chuyên sâu
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-800 mb-4">
               Dưa Cà Muối Chuyên Sâu –<br />
-              <span className="text-[#1B4332]">Từ Gia Đình Đến Kinh Doanh</span>
+              <span className="text-[#006400]">Từ Gia Đình Đến Kinh Doanh</span>
             </h2>
             <p className="text-gray-500 max-w-2xl mx-auto text-base leading-relaxed">
               Khóa học bài bản nhất về dưa cà muối. Cô Hạ dạy từng bước, từng công thức –
@@ -387,12 +389,12 @@ export default function KhoaHocDuaCaMuoi() {
                 </ul>
               </div>
 
-              <div className="bg-[#f0faf4] rounded-2xl p-5 border border-[#b7e4c7]">
-                <h3 className="font-bold text-[#1B4332] text-base mb-3">🎁 Bonus đi kèm</h3>
+              <div className="bg-[#f0fff0] rounded-2xl p-5 border border-[#90ee90]">
+                <h3 className="font-bold text-[#006400] text-base mb-3">🎁 Bonus đi kèm</h3>
                 <ul className="space-y-2">
                   {['Công thức nước ngâm chuẩn tỷ lệ', 'Hướng dẫn chọn nguyên liệu tươi', 'Bí quyết bảo quản giữ lâu', 'Group hỗ trợ học viên 24/7', 'Cập nhật công thức mới miễn phí'].map(i => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-[#1B4332]">
-                      <span className="text-[#2D6A4F] font-bold text-base">✓</span>{i}
+                    <li key={i} className="flex items-center gap-2 text-sm text-[#006400]">
+                      <span className="text-[#007a00] font-bold text-base">✓</span>{i}
                     </li>
                   ))}
                 </ul>
@@ -438,8 +440,8 @@ export default function KhoaHocDuaCaMuoi() {
                 </div>
               </div>
 
-              <div className="bg-white rounded-2xl shadow-2xl border-2 border-[#b7e4c7] overflow-hidden">
-                <div className="bg-gradient-to-r from-[#1B4332] to-[#2D6A4F] px-6 py-5 text-center">
+              <div className="bg-white rounded-2xl shadow-2xl border-2 border-[#90ee90] overflow-hidden">
+                <div className="bg-gradient-to-r from-[#006400] to-[#007a00] px-6 py-5 text-center">
                   <p className="text-white/70 text-sm line-through mb-1">Giá gốc: 999.000đ</p>
                   <span className="text-white text-5xl font-extrabold">138.000đ</span>
                   <div className="mt-2">
@@ -465,10 +467,10 @@ export default function KhoaHocDuaCaMuoi() {
               </div>
 
               {/* Cam kết */}
-              <div className="mt-4 bg-[#f0faf4] border border-[#b7e4c7] rounded-xl p-4 text-center">
+              <div className="mt-4 bg-[#f0fff0] border border-[#90ee90] rounded-xl p-4 text-center">
                 <div className="text-2xl mb-1">🌟</div>
-                <p className="font-bold text-[#1B4332] text-sm">Cam kết học trọn đời</p>
-                <p className="text-[#2D6A4F] text-xs mt-1">Truy cập video & tài liệu mãi mãi, cập nhật công thức mới miễn phí</p>
+                <p className="font-bold text-[#006400] text-sm">Cam kết học trọn đời</p>
+                <p className="text-[#007a00] text-xs mt-1">Truy cập video & tài liệu mãi mãi, cập nhật công thức mới miễn phí</p>
               </div>
             </div>
           </div>
@@ -487,7 +489,7 @@ export default function KhoaHocDuaCaMuoi() {
               { q: 'Tôi có thể học lại nhiều lần không?', a: 'Có! Xem video không giới hạn số lần và thời gian. Group học viên luôn mở, Cô Hạ tiếp tục cập nhật công thức mới miễn phí.' },
             ].map(item => (
               <details key={item.q} className="bg-gray-50 rounded-xl border border-gray-200 group">
-                <summary className="px-5 py-4 font-semibold text-gray-800 cursor-pointer flex justify-between items-center hover:text-[#1B4332] transition-colors text-sm sm:text-base">
+                <summary className="px-5 py-4 font-semibold text-gray-800 cursor-pointer flex justify-between items-center hover:text-[#006400] transition-colors text-sm sm:text-base">
                   {item.q}
                   <span className="text-gray-400 group-open:rotate-180 transition-transform text-xs ml-2 flex-shrink-0">▼</span>
                 </summary>
@@ -510,15 +512,15 @@ export default function KhoaHocDuaCaMuoi() {
             bạn có cả kho bí quyết làm dưa cà cho cả đời!
           </p>
           <button onClick={scrollToCourse}
-            className="bg-white text-[#1B4332] font-extrabold text-xl px-10 py-5 rounded-2xl shadow-xl hover:bg-green-50 transition-colors">
+            className="bg-white text-[#006400] font-extrabold text-xl px-10 py-5 rounded-2xl shadow-xl hover:bg-green-50 transition-colors">
             🎓 Đăng ký ngay – 138.000đ
           </button>
         </div>
       </section>
 
       {/* ══ FOOTER ══ */}
-      <footer className="bg-[#0D2B1A] text-green-400/60 text-center py-6 px-4 text-sm">
-        <p>© 2025 Bếp Cô Hạ – <a href="https://hacofood.vn" className="text-[#52B788] hover:underline">Hacofood.vn</a></p>
+      <footer className="bg-[#003200] text-green-400/60 text-center py-6 px-4 text-sm">
+        <p>© 2025 Bếp Cô Hạ – <a href="https://hacofood.vn" className="text-[#90EE90] hover:underline">Hacofood.vn</a></p>
         <p className="mt-1">Chuyên đào tạo dưa cà muối & ẩm thực truyền thống Việt Nam</p>
       </footer>
 
