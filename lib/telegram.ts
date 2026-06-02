@@ -1,0 +1,46 @@
+const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || ''
+const GIFT_GROUP_ID = process.env.TELEGRAM_GIFT_GROUP_ID || ''
+const COURSE_GROUP_ID = process.env.TELEGRAM_COURSE_GROUP_ID || ''
+
+async function sendMessage(chatId: string, text: string) {
+  if (!BOT_TOKEN || !chatId) return
+  const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`
+  await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'HTML' }),
+  })
+}
+
+export async function notifyGiftLead(data: { name: string; email: string; phone: string }) {
+  const msg = `🎁 <b>HỌC VIÊN NHẬN QUÀ MỚI</b>
+
+👤 Tên: <b>${data.name}</b>
+📧 Email: ${data.email}
+📞 SĐT: ${data.phone}
+⏰ Thời gian: ${new Date().toLocaleString('vi-VN')}`
+
+  await sendMessage(GIFT_GROUP_ID, msg)
+}
+
+export async function notifyCourseLead(data: {
+  name: string
+  email: string
+  phone: string
+  paymentRef: string
+  status: 'pending' | 'paid'
+}) {
+  const icon = data.status === 'paid' ? '✅' : '⏳'
+  const statusText = data.status === 'paid' ? 'ĐÃ THANH TOÁN' : 'CHỜ THANH TOÁN'
+
+  const msg = `${icon} <b>KHÓA DƯA CÀ MUỐI – ${statusText}</b>
+
+👤 Tên: <b>${data.name}</b>
+📧 Email: ${data.email}
+📞 SĐT: ${data.phone}
+🔑 Mã giao dịch: <code>${data.paymentRef}</code>
+💰 Số tiền: 138.000đ
+⏰ Thời gian: ${new Date().toLocaleString('vi-VN')}`
+
+  await sendMessage(COURSE_GROUP_ID, msg)
+}
