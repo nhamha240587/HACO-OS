@@ -230,16 +230,6 @@ export default function KhoaHocDuaCaMuoi() {
         {/* subtle texture */}
         <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle at 25% 50%, white 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 pt-10 pb-14">
-          {/* Logo */}
-          <div className="flex justify-center mb-8">
-            <div className="bg-white rounded-2xl px-5 py-3 shadow-xl inline-flex items-center gap-3">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo.png" alt="Bếp Cô Hạ" className="h-14 w-auto object-contain"
-                onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none' }} />
-              <span className="text-[#006400] font-extrabold text-xl tracking-tight">Bếp Cô Hạ</span>
-            </div>
-          </div>
-
           {/* Badge */}
           <div className="flex justify-center mb-5">
             <span className="bg-red-500 text-white text-sm font-bold px-5 py-1.5 rounded-full animate-bounce shadow">
