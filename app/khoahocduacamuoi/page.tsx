@@ -295,37 +295,6 @@ export default function KhoaHocDuaCaMuoi() {
         </div>
       </section>
 
-      {/* ══ GALLERY ══ */}
-      <section className="py-14 px-4 sm:px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-8">
-            <span className="inline-block bg-green-50 text-[#006400] font-bold text-xs px-4 py-1.5 rounded-full mb-3 tracking-widest uppercase">Thành phẩm</span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-800 mb-2">
-              Những Hũ Dưa Cà <span className="text-[#006400]">Giòn Ngon, Đẹp Mắt</span>
-            </h2>
-            <p className="text-gray-500 text-sm max-w-lg mx-auto">Học xong là làm được ngay — từ dưa cải đến cà muối mắm, đủ món cho bữa cơm Việt</p>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
-            {[
-              { src: '/images/thanh-pham-tong-hop.jpg', label: 'Bộ sưu tập dưa cà – 6 món trong khóa học', tall: true },
-              { src: '/images/ca-muoi-mam-chau.jpg', label: 'Cà muối mắm', tall: false },
-              { src: '/images/dua-cu-cai-ca-rot.jpg', label: 'Dưa củ cải cà rốt', tall: false },
-              { src: '/images/ca-muoi-mam-khai.jpg', label: 'Cà muối mắm cay', tall: false },
-              { src: '/images/dua-ca-muoi-bat.jpg', label: 'Dưa cà muối', tall: false },
-              { src: '/images/dua-cai-dia.jpg', label: 'Dưa cải muối chua', tall: false },
-            ].map(img => (
-              <div key={img.src} className={`relative rounded-2xl overflow-hidden shadow-md group${img.tall ? ' col-span-2 md:col-span-1' : ''}`}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={img.src} alt={img.label} className="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/60 to-transparent px-3 py-2.5">
-                  <p className="text-white text-xs font-semibold drop-shadow">{img.label}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ══ GALLERY: THÀNH PHẨM ══ */}
       <section className="py-12 px-4 sm:px-6 bg-white">
         <div className="max-w-5xl mx-auto">
@@ -336,37 +305,53 @@ export default function KhoaHocDuaCaMuoi() {
             <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-800 mb-2">
               Những Hũ Dưa Cà <span className="text-[#006400]">Giòn Ngon, Đẹp Mắt</span>
             </h2>
-            <p className="text-gray-400 text-sm sm:text-base max-w-lg mx-auto">
-              Học xong là làm được ngay — đủ món cho bữa cơm Việt
+            <p className="text-gray-400 text-sm max-w-lg mx-auto">
+              Học xong là làm được ngay — tất cả đều do học viên Cô Hạ tự tay làm
             </p>
           </div>
 
-          {/* 3×2 grid đều nhau */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          {/* Hàng 1: 1 ảnh lớn (2 cột) + 2 ảnh nhỏ */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-3">
+            {/* Ảnh lớn – collection shot */}
+            <div className="col-span-2 sm:col-span-1 relative rounded-2xl overflow-hidden group shadow-md" style={{ aspectRatio: '4/3' }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/products/bo-suu-tap.jpg" alt="Bộ sưu tập dưa cà – 6 món"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
+              <p className="absolute bottom-3 left-3 text-white text-sm font-bold drop-shadow">🏆 Bộ sưu tập 6 món dưa cà</p>
+            </div>
+            {/* 2 ảnh dọc */}
             {[
-              { src: '/images/products/bo-suu-tap.jpg',       label: 'Bộ sưu tập dưa cà' },
-              { src: '/images/products/ca-muoi-mam-cay.jpg',  label: 'Cà muối mắm cay' },
-              { src: '/images/products/dua-cu-cai-ca-rot.png',label: 'Dưa củ cải cà rốt' },
-              { src: '/images/products/ca-muoi-xanh.png',     label: 'Cà muối xanh' },
-              { src: '/images/products/sung-muoi.png',        label: 'Sung muối sả tắc' },
-              { src: '/images/products/dua-cai-chua.png',     label: 'Dưa cải muối chua' },
+              { src: '/images/products/ca-muoi-mam-cay.jpg', label: 'Cà muối mắm cay' },
+              { src: '/images/products/dua-cu-cai-ca-rot.png', label: 'Dưa củ cải cà rốt' },
             ].map(item => (
-              <div key={item.label}
-                className="relative rounded-xl overflow-hidden group shadow-sm"
-                style={{ aspectRatio: '4/3' }}>
+              <div key={item.label} className="relative rounded-2xl overflow-hidden group shadow-md" style={{ aspectRatio: '3/4' }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={item.src} alt={item.label}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <p className="absolute bottom-2 left-3 text-white text-xs sm:text-sm font-semibold drop-shadow">
-                  {item.label}
-                </p>
+                <p className="absolute bottom-2 left-2.5 text-white text-xs font-semibold drop-shadow">{item.label}</p>
               </div>
             ))}
           </div>
-          <p className="text-center text-gray-400 text-xs mt-4">
-            📸 Tất cả đều do học viên tự tay làm sau khóa học
-          </p>
+
+          {/* Hàng 2: 4 ảnh đều nhau */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {[
+              { src: '/images/products/ca-muoi-xanh.png',    label: 'Cà muối xanh' },
+              { src: '/images/products/sung-muoi.png',        label: 'Sung muối sả tắc' },
+              { src: '/images/products/dua-bap-cai.png',      label: 'Dưa bắp cải' },
+              { src: '/images/products/dua-cai-chua.png',     label: 'Dưa cải muối chua' },
+            ].map(item => (
+              <div key={item.label} className="relative rounded-xl overflow-hidden group shadow-sm" style={{ aspectRatio: '1/1' }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={item.src} alt={item.label}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <p className="absolute bottom-2 left-2 text-white text-xs font-semibold drop-shadow">{item.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
