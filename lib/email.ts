@@ -7,65 +7,94 @@ const FROM_EMAIL = process.env.FROM_EMAIL || 'Bếp Cô Hạ <no-reply@hacofood.
 
 export async function sendGiftEmail(to: { name: string; email: string }) {
   const driveLink = process.env.DRIVE_LINK_GIFT || '#'
-  const communityGroupLink = process.env.COMMUNITY_GROUP_LINK || '#'
 
   return getResend().emails.send({
     from: FROM_EMAIL,
     to: [to.email],
-    subject: '🎁 Quà tặng từ Bếp Cô Hạ – Công thức Cà Muối Mắm & Link Group!',
+    subject: '🎁 Quà tặng từ HaCo Food – Công thức Cà Muối Mắm Giòn 7 Ngày!',
     html: `
 <!DOCTYPE html>
 <html lang="vi">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
-<body style="margin:0;padding:0;background:#fef9f0;font-family:'Segoe UI',Arial,sans-serif;">
+<body style="margin:0;padding:0;background:#f0fff0;font-family:'Segoe UI',Arial,sans-serif;">
   <div style="max-width:600px;margin:0 auto;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
-    <div style="background:linear-gradient(135deg,#d97706,#92400e);padding:40px 32px;text-align:center;">
-      <h1 style="color:#fff;margin:0;font-size:28px;font-weight:800;">🥒 Bếp Cô Hạ</h1>
-      <p style="color:#fde68a;margin:8px 0 0;font-size:16px;">Hacofood.vn</p>
+
+    <!-- HEADER -->
+    <div style="background:linear-gradient(135deg,#003200,#006400);padding:36px 32px;text-align:center;">
+      <p style="font-size:40px;margin:0 0 8px;">🥒</p>
+      <h1 style="color:#fff;margin:0;font-size:26px;font-weight:800;">HaCo Food – Bếp Cô Hạ</h1>
+      <p style="color:#90EE90;margin:6px 0 0;font-size:14px;">khoaduacamuoi.hacofood.vn</p>
     </div>
-    <div style="padding:40px 32px;">
-      <h2 style="color:#92400e;font-size:22px;margin-top:0;">Xin chào ${to.name}! 👋</h2>
-      <p style="color:#4b5563;line-height:1.8;font-size:16px;">
-        Cảm ơn bạn đã quan tâm đến khóa học của Cô Hạ. Đây là phần quà đặc biệt Cô Hạ dành riêng cho bạn:
+
+    <!-- BODY -->
+    <div style="padding:36px 32px;">
+      <h2 style="color:#006400;font-size:22px;margin-top:0;">Xin chào ${to.name}! 👋</h2>
+      <p style="color:#374151;line-height:1.8;font-size:15px;">
+        Cảm ơn bạn đã quan tâm! Đây là phần quà Cô Hạ dành riêng cho bạn:
       </p>
 
-      <div style="background:#fef3c7;border-left:4px solid #d97706;border-radius:8px;padding:20px 24px;margin:24px 0;">
-        <h3 style="color:#92400e;margin-top:0;font-size:18px;">🎁 Quà tặng của bạn</h3>
-        <p style="margin:8px 0;color:#4b5563;">
-          <strong>1. Công thức & Video hướng dẫn Cà Muối Mắm:</strong>
+      <!-- QUÀ TẶNG -->
+      <div style="background:#f0fff0;border-left:4px solid #006400;border-radius:8px;padding:20px 24px;margin:20px 0;">
+        <h3 style="color:#006400;margin-top:0;font-size:17px;">🎁 Quà của bạn</h3>
+        <p style="margin:0 0 12px;color:#374151;font-size:14px;">
+          <strong>📹 Công thức Cà Muối Mắm Giòn 7 Ngày</strong> – video & tài liệu chi tiết từ Cô Hạ
         </p>
-        <a href="${driveLink}" style="display:inline-block;background:#d97706;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:700;margin:8px 0;">
+        <a href="${driveLink}"
+          style="display:inline-block;background:#006400;color:#fff;padding:13px 28px;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px;">
           📥 Nhận công thức ngay
-        </a>
-        <p style="margin:16px 0 8px;color:#4b5563;">
-          <strong>2. Tham gia Group cộng đồng miễn phí:</strong><br>
-          Cùng hàng trăm chị em chia sẻ kinh nghiệm làm dưa cà muối!
-        </p>
-        <a href="${communityGroupLink}" style="display:inline-block;background:#1d4ed8;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:700;margin:8px 0;">
-          👥 Vào Group ngay
         </a>
       </div>
 
-      <div style="background:#f0fdf4;border-radius:8px;padding:20px 24px;margin:24px 0;">
-        <h3 style="color:#166534;margin-top:0;font-size:16px;">💡 Bạn muốn học chuyên sâu hơn?</h3>
-        <p style="color:#4b5563;margin:8px 0;line-height:1.7;">
-          Khóa học <strong>Dưa Cà Muối Chuyên Sâu</strong> của Cô Hạ đang có giá ưu đãi chỉ
-          <strong style="color:#dc2626;font-size:20px;">138.000đ</strong>
-          <del style="color:#9ca3af;">(gốc 999.000đ)</del>
+      <!-- CỘNG ĐỒNG -->
+      <div style="margin:20px 0;">
+        <h3 style="color:#006400;font-size:16px;margin-bottom:12px;">👥 Tham gia cộng đồng miễn phí của Cô Hạ:</h3>
+        <table style="width:100%;border-collapse:collapse;">
+          ${[
+            { icon: '👥', name: 'Nấu ăn cùng Cô Hạ', desc: 'Group tổng – chia sẻ & học hỏi', href: 'https://www.facebook.com/groups/nauancungcoha', color: '#1877F2' },
+            { icon: '📖', name: 'Công thức nấu ăn miễn phí', desc: 'Hàng trăm công thức từ Cô Hạ', href: 'https://www.facebook.com/groups/congthuccoha', color: '#006400' },
+            { icon: '🍜', name: 'Nấu ăn kinh doanh', desc: 'Bí quyết kinh doanh F&B', href: 'https://www.facebook.com/groups/nauankinhdoanh', color: '#006400' },
+            { icon: '🚀', name: 'Khởi nghiệp F&B', desc: 'Cộng đồng khởi nghiệp ẩm thực', href: 'https://www.facebook.com/groups/fnbcoha', color: '#006400' },
+            { icon: '📺', name: 'YouTube Cô Hạ Dạy Nấu Ăn', desc: 'Video hướng dẫn chi tiết', href: 'https://www.youtube.com/@Cohadaynauan8386/featured', color: '#FF0000' },
+            { icon: '🎵', name: 'TikTok Cô Hạ', desc: 'Clip ngắn, mẹo nấu ăn hay', href: 'https://www.tiktok.com/@hacasau', color: '#010101' },
+          ].map(l => `
+          <tr>
+            <td style="padding:6px 0;">
+              <a href="${l.href}" style="display:flex;align-items:center;gap:12px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:10px 14px;text-decoration:none;">
+                <span style="font-size:20px;">${l.icon}</span>
+                <span>
+                  <strong style="display:block;color:#111827;font-size:13px;">${l.name}</strong>
+                  <span style="color:#6b7280;font-size:12px;">${l.desc}</span>
+                </span>
+              </a>
+            </td>
+          </tr>`).join('')}
+        </table>
+      </div>
+
+      <!-- UPSELL -->
+      <div style="background:#fff8f0;border:2px solid #006400;border-radius:10px;padding:20px 24px;margin:20px 0;text-align:center;">
+        <p style="color:#374151;margin:0 0 8px;font-size:14px;">💡 <strong>Muốn học chuyên sâu hơn?</strong></p>
+        <p style="color:#374151;margin:0 0 12px;font-size:14px;">
+          Khóa học <strong>Dưa Cà Muối Chuyên Sâu</strong> – chỉ
+          <strong style="color:#dc2626;font-size:19px;">138.000đ</strong>
+          <del style="color:#9ca3af;font-size:13px;">(gốc 999.000đ)</del>
         </p>
-        <a href="https://hacofood.vn/khoahocduacamuoi#khoa-hoc" style="display:inline-block;background:#dc2626;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:700;margin-top:8px;">
+        <a href="https://khoaduacamuoi.hacofood.vn#khoa-hoc"
+          style="display:inline-block;background:#dc2626;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px;">
           🎓 Xem khóa học ngay
         </a>
       </div>
 
-      <p style="color:#6b7280;font-size:14px;line-height:1.7;margin-top:24px;">
-        Nếu có câu hỏi gì, bạn cứ nhắn thẳng vào group nhé! Cô Hạ luôn sẵn sàng hỗ trợ. 🌸
+      <p style="color:#6b7280;font-size:13px;line-height:1.7;margin-top:20px;">
+        Có câu hỏi gì cứ nhắn vào group nhé! Cô Hạ luôn hỗ trợ bạn. 🌸
       </p>
     </div>
-    <div style="background:#f9fafb;padding:20px 32px;text-align:center;border-top:1px solid #e5e7eb;">
-      <p style="color:#9ca3af;font-size:13px;margin:0;">
-        © 2024 Bếp Cô Hạ – Hacofood.vn<br>
-        Bạn nhận được email này vì đã đăng ký nhận quà tại website của chúng tôi.
+
+    <!-- FOOTER -->
+    <div style="background:#f9fafb;padding:18px 32px;text-align:center;border-top:1px solid #e5e7eb;">
+      <p style="color:#9ca3af;font-size:12px;margin:0;">
+        © 2025 HaCo Food – Bếp Cô Hạ &nbsp;|&nbsp; <a href="https://khoaduacamuoi.hacofood.vn" style="color:#006400;">khoaduacamuoi.hacofood.vn</a><br>
+        Bạn nhận email này vì đã đăng ký nhận quà tại website của chúng tôi.
       </p>
     </div>
   </div>
