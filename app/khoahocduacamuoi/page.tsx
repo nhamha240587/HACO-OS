@@ -233,17 +233,19 @@ export default function KhoaHocDuaCaMuoi() {
 
           {/* Logo + ảnh Cô Hạ */}
           <div className="flex flex-col items-center mb-8 gap-5">
-            <div className="bg-white rounded-2xl px-5 py-2.5 shadow-xl inline-flex items-center gap-3">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo.png" alt="Bếp Cô Hạ" className="h-12 w-auto object-contain"
-                onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none' }} />
-              <span className="text-[#006400] font-extrabold text-xl tracking-tight">Bếp Cô Hạ</span>
+            {/* Logo text – không cần file ảnh */}
+            <div className="bg-white rounded-2xl px-6 py-3 shadow-xl inline-flex items-center gap-3">
+              <span className="text-3xl">🍳</span>
+              <div>
+                <p className="text-[#006400] font-extrabold text-xl leading-tight tracking-tight">Bếp Cô Hạ</p>
+                <p className="text-gray-400 text-xs">Hacofood.vn</p>
+              </div>
             </div>
             {/* Ảnh Cô Hạ tròn */}
             <div className="relative">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/products/co-ha.png"
+                src="/images/co-ha-portrait.png"
                 alt="Cô Hạ – Giảng viên dưa cà muối"
                 className="w-40 h-40 sm:w-48 sm:h-48 object-cover object-top rounded-full border-4 border-white/80 shadow-2xl"
               />
