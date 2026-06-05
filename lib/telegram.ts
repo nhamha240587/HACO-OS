@@ -39,7 +39,7 @@ export async function notifyCourseLead(data: {
 📧 Email: ${data.email}
 📞 SĐT: ${data.phone}
 🔑 Mã giao dịch: <code>${data.paymentRef}</code>
-💰 Số tiền: 138.000đ
+💰 Số tiền: 299.000đ
 ⏰ Thời gian: ${new Date().toLocaleString('vi-VN')}`
 
   await sendMessage(COURSE_GROUP_ID, msg)

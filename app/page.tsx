@@ -546,7 +546,7 @@ export default function KhoaHocDuaCaMuoi() {
                   </div>
                   <div className="flex justify-between font-extrabold text-base text-[#006400]">
                     <span>Giá hôm nay:</span>
-                    <span>chỉ 138.000đ ← Tiết kiệm 957.000đ</span>
+                    <span>chỉ 299.000đ ← Tiết kiệm 796.000đ</span>
                   </div>
                 </div>
               </div>
@@ -598,7 +598,7 @@ export default function KhoaHocDuaCaMuoi() {
               <div className="bg-white rounded-2xl shadow-2xl border-2 border-[#90ee90] overflow-hidden">
                 <div className="bg-gradient-to-r from-[#006400] to-[#007a00] px-6 py-5 text-center">
                   <p className="text-white/70 text-sm line-through mb-1">Giá gốc: 999.000đ</p>
-                  <span className="text-white text-5xl font-extrabold">138.000đ</span>
+                  <span className="text-white text-5xl font-extrabold">299.000đ</span>
                   <div className="mt-2">
                     <span className="inline-block bg-yellow-400 text-yellow-900 text-sm font-bold px-3 py-1 rounded-full">
                       Tiết kiệm 861.000đ – Giảm 86%!
@@ -606,7 +606,7 @@ export default function KhoaHocDuaCaMuoi() {
                   </div>
                 </div>
                 <div className="p-6">
-                  <LeadForm ctaText="🎓 Đăng ký học – 138.000đ" ctaColor="red"
+                  <LeadForm ctaText="🎓 Đăng ký học – 299.000đ" ctaColor="red"
                     onSuccess={(d: FormData & { qr?: QRData; paymentRef?: string }) => {
                       setCourseName(d.name)
                       if (d.qr) setQrData({ ...d.qr, paymentRef: d.paymentRef || '' })
@@ -713,12 +713,12 @@ export default function KhoaHocDuaCaMuoi() {
             <li className="flex items-start gap-2"><span className="text-yellow-300 mt-0.5">•</span><span>Vẫn phải mua ngoài thay vì tự làm ngon hơn, sạch hơn, rẻ hơn</span></li>
           </ul>
           <p className="text-green-200 mb-8 text-lg">
-            Chỉ <strong className="text-yellow-300 text-2xl">138.000đ</strong> — ít hơn 1 bữa ăn ngoài hàng —<br />
+            Chỉ <strong className="text-yellow-300 text-2xl">299.000đ</strong> — ít hơn 1 bữa ăn ngoài hàng —<br />
             bạn có <strong className="text-yellow-300">Hệ Thống 5 Bí Quyết Muối Chuẩn Vị</strong> cho cả đời!
           </p>
           <button onClick={scrollToCourse}
             className="bg-white text-[#006400] font-extrabold text-xl px-10 py-5 rounded-2xl shadow-xl hover:bg-green-50 transition-colors">
-            🎓 Đăng ký ngay – 138.000đ
+            🎓 Đăng ký ngay – 299.000đ
           </button>
         </div>
       </section>

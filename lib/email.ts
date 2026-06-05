@@ -87,7 +87,7 @@ export async function sendGiftEmail(to: { name: string; email: string }) {
         <p style="color:#374151;margin:0 0 8px;font-size:14px;">💡 <strong>Muốn học chuyên sâu hơn?</strong></p>
         <p style="color:#374151;margin:0 0 12px;font-size:14px;">
           Khóa học <strong>Dưa Cà Muối Chuyên Sâu</strong> – chỉ
-          <strong style="color:#dc2626;font-size:19px;">138.000đ</strong>
+          <strong style="color:#dc2626;font-size:19px;">299.000đ</strong>
           <del style="color:#9ca3af;font-size:13px;">(gốc 999.000đ)</del>
         </p>
         <a href="https://khoaduacamuoi.hacofood.vn#khoa-hoc"
@@ -164,7 +164,7 @@ export async function sendCourseConfirmEmail(to: { name: string; email: string }
           </tr>
           <tr>
             <td style="color:#6b7280;padding:6px 0;">Giá trị:</td>
-            <td style="color:#dc2626;font-weight:800;text-align:right;font-size:18px;">138.000đ</td>
+            <td style="color:#dc2626;font-weight:800;text-align:right;font-size:18px;">299.000đ</td>
           </tr>
         </table>
       </div>

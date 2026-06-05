@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     }
 
     const paymentRef = generatePaymentRef(phone.trim())
-    const amount = 138000
+    const amount = 299000
 
     await insertCourseLead({ name: name.trim(), email: email.trim(), phone: phone.trim(), paymentRef })
 

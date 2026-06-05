@@ -37,7 +37,7 @@ export async function initDb() {
       phone TEXT NOT NULL,
       payment_ref TEXT UNIQUE,
       payment_status TEXT DEFAULT 'pending',
-      amount INTEGER DEFAULT 138000,
+      amount INTEGER DEFAULT 299000,
       paid_at TIMESTAMPTZ,
       created_at TIMESTAMPTZ DEFAULT NOW(),
       email_sent BOOLEAN DEFAULT FALSE,
