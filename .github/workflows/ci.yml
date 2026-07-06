@@ -12,36 +12,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  backend:
-    name: Backend — lint & build
+  noop:
+    name: No-op (legacy apps/ removed from CI)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-      - name: Install dependencies
-        run: npm ci
-      - name: Lint
-        run: npx eslint "src/**/*.ts" --max-warnings=0
-        working-directory: apps/backend-gateway
-      - name: Build
-        run: npm run build:backend
-
-  dashboard:
-    name: Dashboard — lint, typecheck & build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-      - name: Install dependencies
-        run: npm ci
-      - name: Lint
-        run: npx eslint "src/**/*.{ts,vue}" --max-warnings=0
-        working-directory: apps/admin-dashboard
-      - name: Build (gồm vue-tsc typecheck)
-        run: npm run build:dashboard
+      - run: echo "CI is currently a no-op — apps/backend-gateway and apps/admin-dashboard are unused legacy code, excluded from lint/build."
